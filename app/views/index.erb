@@ -1,0 +1,10 @@
+<div class='mainButtons'>
+	<ul>
+		<% if current_user %>
+          <li> <a href="/logout" class='mainBtn'>Logout</a></li>
+        <% else %>
+          <li><a href="/signin" class='mainBtn' >Sign In</a></li>
+          <li> <a href="/register" class='mainBtn' >Sign Up</a></li>
+        <% end %> 
+	</ul>
+</div>
