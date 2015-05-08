@@ -6,18 +6,18 @@ post '/signup' do
 
 end
 
-get '/user/login' do
+get '/users/login' do
 
 end
 
-post '/user/login'  do
+post '/users/login'  do
 
 end
 
-get '/user/logout' do
+get '/users/logout' do
 
 end
 
-get '/user/:id' do
+get '/users/:id' do
 
 end
