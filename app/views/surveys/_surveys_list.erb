@@ -5,7 +5,7 @@
 			<li>
 				<a href="/survey/<%= survey.id %>"><%= survey.title %></a>
 				<% if actions %>
-					<%= erb :"surveys/_survey_actions" , locals: { title: title} %>
+					<%= erb :"surveys/_survey_actions" , locals: { title: title, survey: survey} %>
 				<% end %>
 			</li>
 		<% end %>
