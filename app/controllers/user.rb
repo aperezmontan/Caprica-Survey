@@ -1,23 +1,25 @@
-get '/signup' do
+get '/' do
 
 end
 
-post '/signup' do
+get '/auth' do
 
 end
 
-get '/users/login' do
+
+get '/user/:id' do
 
 end
 
-post '/users/login'  do
+
+get '/user/login' do
 
 end
 
-get '/users/logout' do
+post '/user/login'  do
 
 end
 
-get '/users/:id' do
+get '/user/logout' do
 
 end
