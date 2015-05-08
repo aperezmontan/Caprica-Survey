@@ -1,0 +1,6 @@
+<!-- List user's different survey types -->
+<%= erb :'/surveys/_surveys_list', locals:{surveys: open, actions: true, title: "Open Surveys"} %>
+
+<%= erb :'/surveys/_surveys_list', locals:{surveys: closed, actions: true, title: "Closed Surveys"} %>
+
+<%= erb :'/surveys/_surveys_list', locals:{surveys: draft, actions: true, title: "Draft Surveys"} %>

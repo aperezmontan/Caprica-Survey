@@ -2,7 +2,7 @@
 	<% if title == 'Open Surveys' %>
 		<li><form action='/survey/<%= survey.id %>' method='post'>
 			<input type="hidden" name="_method" value="put" />
-			<input type="hidden" name="survey[status]" value="close" />
+			<input type="hidden" name="survey[status]" value="closed" />
 			<input type="submit" value="Close" />
 		</form>
 		</li>
