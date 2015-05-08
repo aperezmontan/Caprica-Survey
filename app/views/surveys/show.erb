@@ -1,0 +1,15 @@
+<section>
+	<header><%= survey.title %></header>
+	<form action="/user/<%= user_id %>/survey" method="post" />
+		<% survey.questions.each do |question| %>
+			<ul class='questionContainer'>
+				<li class='question'><%= question.description %></li>
+				<% quetion.answers.each do |answer| %>
+					<li><label><input type="radio" name="answer[<%= question.id %>]" value="<%= answer.id %>" />answer.description</label></li>
+				<% end %>
+			</ul>	
+
+		<% end %>
+		<input type="submit" value="submit survey" />
+	</form>
+</section>
