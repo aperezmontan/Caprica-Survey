@@ -1,0 +1,13 @@
+<section>
+	<header><=% title =%></header>
+	<ul>
+		<% surveys.each do |survey| %>
+			<li>
+				<a href="/survey/<%= survey.id %>"><%= survey.title %></a>
+				<% if actions %>
+					<%= erb :"surveys/_survey_actions" , locals: { title: title} %>
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
+</section>
