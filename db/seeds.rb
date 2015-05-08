@@ -1,8 +1,8 @@
-mildred = User.create(name: "Mildred", email: "mildred@mildred.com", password_hash: 123)
-vinny = User.create(name: "Vinny", email: "Vinny@Vinny.com", password_hash: 123)
-betty = User.create(name: "Betty", email: "betty@betty.com", password_hash: 123)
-alison = User.create(name: "alison", email: "alison@alison.com", password_hash: 123)
-jeffery = User.create(name: "jeffery", email: "jeffery@jeffery.com", password_hash: 123)
+mildred = User.create(name: "Mildred", email: "mildred@mildred.com", password: 123)
+vinny = User.create(name: "Vinny", email: "Vinny@Vinny.com", password: 123)
+betty = User.create(name: "Betty", email: "betty@betty.com", password: 123)
+alison = User.create(name: "alison", email: "alison@alison.com", password: 123)
+jeffery = User.create(name: "jeffery", email: "jeffery@jeffery.com", password: 123)
 
 
 
