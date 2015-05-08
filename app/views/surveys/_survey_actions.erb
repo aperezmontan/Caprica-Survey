@@ -12,17 +12,20 @@
 			<input type="hidden" name="survey[status]" value="open" />
 			<input type="submit" value="Open" />
 		</form></li>
+
 		<li><form action='/survey/<%= survey.id %>/update' method='get'><input type="submit" value="Edit" /></form></li>
+
 		<li><form action='/survey/<%= survey.id %>' method='post'>
 			<input type="hidden" name="_method" value="delete" />
 			<input type="submit" value="Delete" />
 		</form></li>
 	<% else %>
 		<li><form action='/survey/<%= survey.id %>/results' method='get'><input type="submit" value="Results" /></form></li>
+
 		<li><form action='/survey/<%= survey.id %>' method='post'>
 			<input type="hidden" name="_method" value="delete" />
 			<input type="submit" value="Delete" />
 		</form></li>
 	<% end %>
-		
+
 </ul>

@@ -6,4 +6,6 @@ class Survey < ActiveRecord::Base
 
 
   validates :title, presence: true, length: {minimum: 3}
+
+  scope :not_in_list, -> survey_list { where.not(id: survey_list )}
 end
