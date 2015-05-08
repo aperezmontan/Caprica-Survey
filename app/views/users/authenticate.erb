@@ -1,0 +1,6 @@
+<%=params[:signup]%>
+<%if params[:signup] == 'false'%>
+  <%= erb :'/users/_signin'%>
+<%else%>
+  <%= erb :'/users/_signup'%>
+<%end%>
