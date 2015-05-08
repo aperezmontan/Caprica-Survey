@@ -1,0 +1,10 @@
+<div class='mainButtons'>
+	<ul>
+      <li> <a href="/survey/create" class='mainBtn'>Create Survey</a></li>
+      <li><a href="/surveys" class='mainBtn' >Take Survey</a></li>
+	</ul>
+</div>
+
+<%= erb :"/surveys/_surveys_list" , locals: { title:"Open Surveys", surveys:open_surveys} %>
+<%= erb :"/surveys/_surveys_list" , locals: { title:"Draft Surveys", surveys:open_surveys} %>
+<%= erb :"/surveys/_surveys_list" , locals: { title:"Close Surveys", surveys:open_surveys} %>

@@ -1,0 +1,12 @@
+<section>
+	<header>Survey</header>
+	<form action="/survey/create" method="post">
+		<input type="text" name="survey[title]" placeholder="Survay title" />
+		<label>Questions</label>
+		<% 3.times do |index| %>
+		<%= erb :"surveys/_question_answers" , locals: { index: index } %>
+		<% end %>
+		<input class="draftBtn" type="submit" value="Save as draft" />
+		<input class="submitBtn" type="submit" value="submit" />
+	</form>
+</section>
