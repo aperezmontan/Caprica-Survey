@@ -22,12 +22,11 @@
 <body>
   <nav>
       <ul>
-        <li class='logo'><a href="/"><img src='' /></a></li>
         <% if current_user %>
-          <li> <a href="/logout">Logout</a></li>
+          <li> <a href="/signout">Sign Out</a></li>
         <% else %>
-          <li><a href="/login">Login</a></li>
-        <% end %>        
+          <li><a href="/authenticate?signup=false">Sign In</a></li>
+        <% end %>
       </ul>
   </nav>
   <div id="content">
