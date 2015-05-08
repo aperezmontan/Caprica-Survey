@@ -41,4 +41,8 @@ put '/survey/:id' do
   redirect '/users/index'
 end
 
-
+delete '/survey/:id' do
+  survey = Survey.find(params[:id])
+  survey.destroy
+  redirect '/users/index'
+end
