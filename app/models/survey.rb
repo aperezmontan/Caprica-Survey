@@ -3,4 +3,7 @@ class Survey < ActiveRecord::Base
   has_many :questions
   has_many :completed_surveys
   has_many :answers
+
+
+  validates :title, presence: true, length: {minimum: 3}
 end
