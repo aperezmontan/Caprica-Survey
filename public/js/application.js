@@ -2,6 +2,7 @@ $(document).ready(function() {
   $("#draftBtn").on('click',createDraftSurvey);
   $("#addQuestionsBtn").on('click',addQuestions);
   $("#surveySearch").keyup(filterSurveys);
+  $("#saveOpenBtn").on('click',updateSurvey);
 });
 
 var createDraftSurvey = function(e){
@@ -48,3 +49,8 @@ var filterSurveys = function(e){
     $( ".surveysContainer>li" ).css("display","block");
   }
 }
+
+var updateSurvey = function(e) {
+  $("#surveyUpdateForm").append("<input type='hidden' name='survey[status]' value='open' />");
+  $("#surveyUpdateForm").submit();
+};
