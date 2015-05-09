@@ -9,7 +9,7 @@ get '/authenticate' do
 end
 
 post '/signin' do
-  current_user = User.find_by(name: params[:name])
+  current_user = User.where(["name = ? or email = ?", params[:name], params[:name]]).first
   if current_user && current_user.authenticate( params[:password] )
     session[:user_id] = current_user.id
     redirect '/surveys'
