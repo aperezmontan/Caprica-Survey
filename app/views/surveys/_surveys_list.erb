@@ -3,10 +3,15 @@
 	<ul class="surveysContainer">
 		<% surveys.each do |survey| %>
 			<li>
+				<div class='surveyTitleLink'>
 				<a href="/survey/<%= survey.id %>"><%= survey.title %></a>
 				<% if actions %>
-					Number of responses: <%=survey.response_count%>
-					<%= erb :"surveys/_survey_actions" , locals: { title: title, survey: survey} %>
+					<span class='responseNumber'>Number of responses: <%=survey.response_count%></span></div>
+					<div class='actionsContainer'>
+						<%= erb :"surveys/_survey_actions" , locals: { title: title, survey: survey} %>
+					</div>
+				<% else %>
+					</div>
 				<% end %>
 			</li>
 		<% end %>
