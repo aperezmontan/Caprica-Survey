@@ -11,8 +11,9 @@ end
 post '/signin' do
   current_user = User.where(["name = ? or email = ?", params[:name], params[:name]]).first
   if current_user && current_user.authenticate( params[:password] )
-    session[:user_id] = current_user.id
-    redirect '/user/:id'
+    user_id = current_user.id
+    session[:user_id] = user_id
+    redirect "/user/#{user_id}"
   else
     redirect '/authenticate?error=ua&signup=false'
   end

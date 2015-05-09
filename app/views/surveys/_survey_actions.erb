@@ -20,7 +20,9 @@
 			<input type="submit" value="Delete" />
 		</form></li>
 	<% else %>
+		<% if survey.response_count > 0 %>
 		<li><form action='/survey/<%= survey.id %>/results' method='get'><input type="submit" value="Results" /></form></li>
+		<% end %>
 
 		<li><form action='/survey/<%= survey.id %>' method='post'>
 			<input type="hidden" name="_method" value="delete" />

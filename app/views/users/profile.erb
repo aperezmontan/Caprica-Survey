@@ -1,6 +1,10 @@
 <!-- List user's different survey types -->
-<a href='/survey/create'>Create New Survey</a>
-<a href='/surveys'>Take a Survey</a>
+<div >
+	<ul class='mainButtons'>
+      <li> <a href="/survey/create" class='mainBtn'>Create Survey</a></li>
+      <li><a href="/surveys" class='mainBtn' >Take Survey</a></li>
+	</ul>
+</div>
 
 <%= erb :'/surveys/_surveys_list', locals:{surveys: open, actions: true, title: "Open Surveys"} %>
 
