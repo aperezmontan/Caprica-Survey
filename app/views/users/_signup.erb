@@ -1,3 +1,9 @@
+<div>
+  <%if params[:error] == 'ua'%>
+    User could not be saved
+  <%end%>
+</div>
+
 <form action='/signup' method='POST'>
     <input type=string name='user[name]' placeholder="Name"/>
     <input type=string name='user[email]' placeholder="e-mail"/>
