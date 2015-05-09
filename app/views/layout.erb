@@ -11,6 +11,7 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="/css/style.css">
   <!-- Load Vollkorn font -->
   <link href='http://fonts.googleapis.com/css?family=Vollkorn:400italic,400' rel='stylesheet' type='text/css'>
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -24,9 +25,9 @@
   <nav>
       <ul>
         <% if current_user %>
-          <li> <a href="/surveys">Home</a></li>
-          <li> <a href="/user/<%= current_user.id %>"><%= current_user.name %></a></li>
+          <li class='mainClick'> <a href="/surveys">Home</a></li>
           <li> <a href="/signout">Sign Out</a></li>
+          <li> <a href="/user/<%= current_user.id %>"><%= current_user.name %></a></li>
         <% else %>
           <li><a href="/authenticate?signup=false">Sign In</a></li>
         <% end %>
