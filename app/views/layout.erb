@@ -22,7 +22,9 @@
 <body>
   <nav>
       <ul>
+        <li> <a href="/surveys">Home</a></li>
         <% if current_user %>
+          <li> <a href="/user/<%= current_user.id %>"><%= current_user.name %></a></li>         
           <li> <a href="/signout">Sign Out</a></li>
         <% else %>
           <li><a href="/authenticate?signup=false">Sign In</a></li>
