@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $("#draftBtn").on('click',createDraftSurvey);
   $("#addQuestionsBtn").on('click',addQuestions);
-  
+  $("#surveySearch").keyup(filterSurveys);
 });
 
 var createDraftSurvey = function(e){
@@ -31,4 +31,20 @@ var addQuestions = function(){
       }
       cur_index += questions_to_add;
   });
+}
+
+var filterSurveys = function(e){
+  var searchTxt = $("#surveySearch").val();
+  searchTxt = searchTxt.trim();
+  if (searchTxt){
+    $( ".surveysContainer>li" ).each(function(){
+       if ( $(this).is(":contains('" + searchTxt + "')") ) {
+          $(this).css("display","block");
+       } else {
+          $(this).css("display","none");
+       }
+    });
+  } else {
+    $( ".surveysContainer>li" ).css("display","block");
+  }
 }
