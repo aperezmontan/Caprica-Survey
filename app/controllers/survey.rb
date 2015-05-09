@@ -30,7 +30,8 @@ end
 
 get '/survey/:id' do
   survey = Survey.find(params[:id])
-  erb :'surveys/show', locals:  {survey: survey, user_id:1}
+  percentage = Answer.answer_count(4)
+  erb :'surveys/show', locals:  {survey: survey, user_id:1, percentage: percentage}
 end
 
 post '/user/:user_id/survey/:survey_id' do
