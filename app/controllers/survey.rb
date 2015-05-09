@@ -10,6 +10,7 @@ get '/survey/create' do
 end
 
 post '/survey/create' do
+  return [400,"Invalid params, please fill all fields"] if check_params_for_survey params
   params[:survey][:creator_id] = current_user.id
   survey = Survey.new(params[:survey])
   return [500,"Couldn't create survey"] unless survey.save
