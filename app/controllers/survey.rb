@@ -45,9 +45,11 @@ get '/survey/:id' do
 end
 
 post '/user/:user_id/survey/:survey_id' do
+  survey = params[:survey_id]
   params["answers"].values.each do |answer_id|
       CompletedSurvey.create(answer_id: answer_id, survey_id: params[:survey_id], taker_id: params[:user_id])
   end
+  Survey.find(survey).response_count += 1
   redirect '/surveys'
 end
 

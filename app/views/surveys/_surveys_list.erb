@@ -4,6 +4,7 @@
 		<% surveys.each do |survey| %>
 			<li>
 				<a href="/survey/<%= survey.id %>"><%= survey.title %></a>
+				Number of responses: <%=survey.count%>
 				<% if actions %>
 					<%= erb :"surveys/_survey_actions" , locals: { title: title, survey: survey} %>
 				<% end %>
