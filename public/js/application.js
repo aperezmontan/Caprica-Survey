@@ -3,6 +3,13 @@ $(document).ready(function() {
   $("#addQuestionsBtn").on('click',addQuestions);
   $("#surveySearch").keyup(filterSurveys);
   $("#saveOpenBtn").on('click',updateSurvey);
+
+  $.expr[":"].contains = $.expr.createPseudo(function(arg) {
+    return function( elem ) {
+        return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
+    };
+  });
+  
 });
 
 var createDraftSurvey = function(e){
@@ -54,3 +61,6 @@ var updateSurvey = function(e) {
   $("#surveyUpdateForm").append("<input type='hidden' name='survey[status]' value='open' />");
   $("#surveyUpdateForm").submit();
 };
+
+
+
