@@ -1,0 +1,10 @@
+<%= question.description %>
+
+<% question.answers.each_with_index do |answer,index| %>
+  <%= answer.description %>
+  <div id="answer_<%=answer.id%>" class="chart"></div>
+  <script type="text/javascript">
+    var data = <%=[percent[index]] %>
+    results("#answer_" + <%=answer.id%>,data);
+  </script>
+<% end %>
