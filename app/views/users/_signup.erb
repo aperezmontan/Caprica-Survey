@@ -1,6 +1,12 @@
 <form action='/signup' method='POST'>
     <input type=string name='user[name]' placeholder="Name"/>
     <input type=string name='user[email]' placeholder="e-mail"/>
+    <input type=integer name='user[age]' placeholder="age"/>
+    <select name="mydropdown">
+      <option value="Gender">Gender</option>
+      <option value="Female">Female</option>
+      <option value="Male">Male</option>
+    </select>
     <input type=password name='user[password]' placeholder="Password"/>
     <input type=password name='user[password_confirmation]' placeholder="Confirm Password"/>
   <input type=submit name="Sign Up"/>
