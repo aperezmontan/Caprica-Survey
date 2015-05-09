@@ -12,7 +12,7 @@ post '/signin' do
   current_user = User.where(["name = ? or email = ?", params[:name], params[:name]]).first
   if current_user && current_user.authenticate( params[:password] )
     session[:user_id] = current_user.id
-    redirect '/surveys'
+    redirect '/user/:id'
   else
     redirect '/authenticate?error=ua&signup=false'
   end
