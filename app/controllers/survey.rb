@@ -30,7 +30,8 @@ end
 
 get '/survey/:id/results' do |id|
   questions = Survey.find(id).questions
-  erb :"/surveys/results", locals: {questions: questions}
+  survey = Survey.find(id)
+  erb :"/surveys/results", locals: {questions: questions, survey: survey}
 end
 
 get '/question/:id/results' do |id|
