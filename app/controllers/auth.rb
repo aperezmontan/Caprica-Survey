@@ -14,7 +14,7 @@ post '/signin' do
     session[:user_id] = current_user.id
     redirect '/surveys'
   else
-    redirect '/authenticate?error=ua'
+    redirect '/authenticate?error=ua&signup=false'
   end
 end
 
@@ -24,7 +24,7 @@ post '/signup' do
     session[:user_id] = new_user.id
     redirect '/surveys'
   else
-    redirect back
+    redirect '/authenticate?error=ua&signup=true'
   end
 end
 
