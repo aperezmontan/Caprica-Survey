@@ -10,7 +10,8 @@ get '/survey/create' do
 end
 
 post '/survey/create' do
-  survey = Survey.new(title: params[:survey][:title], creator_id: 1)
+  params[:survey][:creator_id] = 1
+  survey = Survey.new(params[:survey])
   return [500,"Couldn't create survey"] unless survey.save
   questions = params["questions"]
   questions.each_with_index do |question,index|
@@ -19,6 +20,7 @@ post '/survey/create' do
         Answer.create(description: answer, question_id: question_created.id)
     end
   end
+  return "success" if request.xhr?
   redirect '/surveys'
 end
 
