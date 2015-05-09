@@ -1,5 +1,10 @@
+<div>
+  <%if params[:error] == 'ua'%>
+    Unauthorized
+  <%end%>
+</div>
 <form action='/signin' method='POST'>
-  <input type=string name='user[name]' placeholder="Name"/>
-  <input type=password name='user[password]' placeholder="Password"/>
+  <input type=string name='name' placeholder="Name"/>
+  <input type=password name='password' placeholder="Password"/>
   <input type=submit name="Sign In"/>
 </form>

@@ -1,6 +1,6 @@
-<%=params[:signup]%>
-<%if params[:signup] == 'false'%>
-  <%= erb :'/users/_signin'%>
+<%if params[:signup] == 'false' || params[:error] == 'ua'%>
+  <% error = params[:error] %>
+  <%= erb :'/users/_signin', locals: {error: error} %>
 <%else%>
   <%= erb :'/users/_signup'%>
 <%end%>
