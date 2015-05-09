@@ -32,7 +32,7 @@ nav>ul>li>a:hover {
 }
 
 #content{
-	padding: 10px;
+	padding-top: 100px;
 	clear: both;
 }
 
@@ -69,7 +69,7 @@ input[type='radio'] {
 }
 
 .mainButtons {
-	width:500px;
+	width:400px;
 	margin:auto;
 	padding: 20px;
 	clear: both;
@@ -138,7 +138,7 @@ input[type='radio'] {
 	color: #fff;
 }
 
-.openBtn {
+.openBtn, .resultBtn {
 	background-color: #04ce1c;
 	color: #fff;
 	
@@ -152,4 +152,15 @@ input[type='radio'] {
 .editBtn {
 	background-color: #d47908;
 	color: #fff;
+}
+
+.logo {
+	  width: 315px;
+  height: 155px;
+  position: absolute;
+  left: 473px;
+}
+
+#logoContainer {
+	text-align: right;
 }
