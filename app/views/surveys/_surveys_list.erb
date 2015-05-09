@@ -1,6 +1,6 @@
 <section>
 	<header><%= title %></header>
-	<ul>
+	<ul class="surveysContainer">
 		<% surveys.each do |survey| %>
 			<li>
 				<a href="/survey/<%= survey.id %>"><%= survey.title %></a>
