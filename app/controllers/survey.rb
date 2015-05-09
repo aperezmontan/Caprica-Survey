@@ -15,9 +15,13 @@ post '/survey/create' do
   return [500,"Couldn't create survey"] unless survey.save
   questions = params["questions"]
   questions.each_with_index do |question,index|
-    question_created = Question.create(description: question, survey_id: survey.id)
-    params["answers"]["#{index}"].each do |answer|
-        Answer.create(description: answer, question_id: question_created.id)
+    if !question.empty?
+      question_created = Question.create(description: question, survey_id: survey.id)
+      params["answers"]["#{index}"].each do |answer|
+          if !answer.empty?
+            Answer.create(description: answer, question_id: question_created.id)
+          end
+      end
     end
   end
   return "success" if request.xhr?
