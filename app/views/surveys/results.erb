@@ -1,3 +1,9 @@
+<script src="http://d3js.org/d3.v3.min.js"  charset="utf-8"></script>
+<script src="/js/results.js"></script>
+
 <%questions.each do |question|%>
-<a href="/question/<%=question.id%>/results"><%=question.description%></a>
+<% percent = question.answer_count(question) %>
+  <%= erb :'questions/_survey_results', locals: {question: question, percent: percent} %>
 <%end%>
+
+
