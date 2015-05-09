@@ -1,21 +1,17 @@
 $(document).ready(function() {
-  $("#draftBtn").on('submit',createDraftSurvey);
-  $("#submitBtn").on('submit',createDraftSurvey);
+  $("#draftBtn").on('click',createDraftSurvey);
   $("#addQuestionsBtn").on('click',addQuestions);
   
 });
 
 var createDraftSurvey = function(e){
-  console.log(e);
-  alert('here');
   e.preventDefault();
-  $(e.target).append("<input type='hidden' name='survey[status]' value='draft' />");
+  $("#createForm").append("<input type='hidden' name='survey[status]' value='draft' />");
   $.ajax({
-    url: e.target.action,
-    method: e.target.method,
-    data: $(e.target).serialize()
+    url: "/survey/create",
+    method: "post",
+    data: $("#createForm").serialize()
   }).done(function(response){
-    alert(response);
     if(response == "success"){
       window.location = "/surveys";
     }
