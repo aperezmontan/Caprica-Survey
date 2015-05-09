@@ -15,7 +15,7 @@
 
 		<li><form action='/survey/<%= survey.id %>/update' method='get'><input type="submit" value="Edit" class="editBtn" /></form></li>
 
-		<li><form action='/survey/<%= survey.id %>' method='post'>
+		<li><form id="delSurveyOnUpdate" action='/survey/<%= survey.id %>' method='post'>
 			<input type="hidden" name="_method" value="delete" />
 			<input type="submit" class="deleteBtn" value="Delete" />
 		</form></li>
@@ -24,7 +24,7 @@
 		<li><form action='/survey/<%= survey.id %>/results' method='get'><input type="submit" class="resultBtn"  value="Results" /></form></li>
 		<% end %>
 
-		<li><form action='/survey/<%= survey.id %>' method='post'>
+		<li><form id="delSurveyResults" action='/survey/<%= survey.id %>' method='post'>
 			<input type="hidden" name="_method" value="delete" />
 			<input type="submit" class="deleteBtn"  value="Delete" />
 		</form></li>

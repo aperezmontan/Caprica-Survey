@@ -3,13 +3,15 @@ $(document).ready(function() {
   $("#addQuestionsBtn").on('click',addQuestions);
   $("#surveySearch").keyup(filterSurveys);
   $("#saveOpenBtn").on('click',updateSurvey);
+  $("#delSurveyResults").on('submit', deleteSurveyResults)
+  $("#delSurveyOnUpdate").on('submit', deleteSurveyUpdate)
 
   $.expr[":"].contains = $.expr.createPseudo(function(arg) {
     return function( elem ) {
         return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
     };
   });
-  
+
 });
 
 var createDraftSurvey = function(e){
@@ -62,5 +64,37 @@ var updateSurvey = function(e) {
   $("#surveyUpdateForm").submit();
 };
 
+var deleteSurveyResults = function(e) {
+  e.preventDefault();
 
+  $("#signin").modal();
+  $.ajax({
+    url: e.target.action,
+    method: e.target.method,
+    data: $("#delSurveyResults").serialize()
+  }).done(function(response){
+    if(response == "success"){
+      window.location = '/user/<%=current_user.id%>';
+    }
+  }).fail(function(response){
+      alert(response);
+  });
+}
+
+var deleteSurveyUpdate = function(e) {
+  e.preventDefault();
+
+  $("#signin").modal();
+  $.ajax({
+    url: e.target.action,
+    method: e.target.method,
+    data: $("#delSurveyOnUpdate").serialize()
+  }).done(function(response){
+    if(response == "success"){
+      window.location = '/user/<%=current_user.id%>';
+    }
+  }).fail(function(response){
+      alert(response);
+  });
+}
 
