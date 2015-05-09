@@ -34,15 +34,38 @@ post '/user/:user_id/survey/:survey_id' do
   redirect '/surveys'
 end
 
-put '/survey/:id' do
+get '/survey/:id/update' do |id|
+  survey = Survey.find(id)
+  return [500,"Can't edit an open survey"] unless survey.status == 'draft'
+  erb :"surveys/update" , locals: { survey: survey}
+end
+
+put '/status/survey/:id' do
   survey = Survey.find(params[:id])
   survey.status = params[:survey][:status]
   survey.save
-  redirect '/users/index'
+  redirect "/user/#{survey.creator.id}"
 end
 
 delete '/survey/:id' do
   survey = Survey.find(params[:id])
   survey.destroy
-  redirect '/users/index'
+  redirect "/user/#{survey.creator.id}"
+end
+
+put "/survey/:id" do |id|
+  survey = Survey.find(id)
+  survey.update_attributes(params[:survey])
+
+  params[:questions].each do |question_id, description |
+      question = Question.find(question_id)
+      question.description = description
+      question.save
+      params[:answers]["#{question.id}"].each do |answer_id, description |
+          answer = Answer.find(answer_id)
+          answer.description = description
+          answer.save
+      end
+  end
+  redirect "/user/#{survey.creator.id}"
 end
