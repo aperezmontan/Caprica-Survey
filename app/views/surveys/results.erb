@@ -6,4 +6,32 @@
   <%= erb :'questions/_survey_results', locals: {question: question, percent: percent} %>
 <%end%>
 
+<div id='outer' style="width: 100px; height:80px; margin: 0px auto; margin-top:20px; padding:10px">
+    <div id="main" style="width:1000px; height:200px; margin: 0px auto; ">
+        <div id="div1"></div>
+    </div>
+</div>
 
+<script language="JavaScript">
+var response_rate = <%=(survey.response_count.to_f / survey.closing_number.to_f) * 100 %>
+var div1=d3.select(document.getElementById('div1'));
+start();
+function onClick1() {
+    deselect();
+    div1.attr("class","selectedRadial");
+}
+function labelFunction(val,min,max) {
+}
+function deselect() {
+    div1.attr("class","radial");
+}
+function start() {
+    var rp1 = radialProgress(document.getElementById('div1'))
+      .label("% Complete")
+      .onClick(onClick1)
+      .diameter(100)
+      .value(response_rate)
+      .render();
+
+}
+</script>

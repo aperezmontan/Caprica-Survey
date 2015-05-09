@@ -35,7 +35,7 @@ var addQuestions = function(){
   $.get("/questions/layout",{index:'index'},function(response){
       for(var i = 1; i <= questions_to_add; i++){
         var aux = response.replace(/index/g,cur_index + i);
-        $("#addQuestionsBtn").before(aux);        
+        $("#addQuestionsBtn").before(aux);
       }
       cur_index += questions_to_add;
   });
