@@ -1,5 +1,5 @@
 get '/surveys' do
-  user_surveys = CompletedSurvey.where(taker_id: 1)
+  user_surveys = CompletedSurvey.where(taker_id: current_user.id)
   surveys_ids = user_surveys.map{ |completed_survey| completed_survey.survey_id }
   surveys = Survey.not_in_list(surveys_ids)
   erb :"surveys/index", locals: {surveys: surveys }
@@ -10,7 +10,7 @@ get '/survey/create' do
 end
 
 post '/survey/create' do
-  params[:survey][:creator_id] = 1
+  params[:survey][:creator_id] = current_user.id
   survey = Survey.new(params[:survey])
   return [500,"Couldn't create survey"] unless survey.save
   questions = params["questions"]
@@ -28,9 +28,20 @@ post '/survey/create' do
   redirect '/surveys'
 end
 
+get '/survey/:id/results' do |id|
+  questions = Survey.find(id).questions
+  erb :"/surveys/results", locals: {questions: questions}
+end
+
+get '/question/:id/results' do |id|
+  question = Question.find(id)
+  percent = question.answer_count(question)
+  erb :'/questions/results', locals:{percent: percent, question: question}
+end
+
 get '/survey/:id' do
   survey = Survey.find(params[:id])
-  erb :'surveys/show', locals:  {survey: survey, user_id:1}
+  erb :'surveys/show', locals:  {survey: survey, user_id: current_user.id}
 end
 
 post '/user/:user_id/survey/:survey_id' do
@@ -45,6 +56,7 @@ get '/survey/:id/update' do |id|
   return [500,"Can't edit an open survey"] unless survey.status == 'draft'
   erb :"surveys/update" , locals: { survey: survey}
 end
+
 
 put '/status/survey/:id' do
   survey = Survey.find(params[:id])
