@@ -9,20 +9,26 @@ get '/authenticate' do
 end
 
 post '/signin' do
-
-  erb :'/surveys'
+  current_user = User.find_by(name: params[:name])
+  if current_user && current_user.authenticate( params[:password] )
+    session[:user_id] = current_user.id
+    redirect '/surveys'
+  else
+    redirect '/authenticate?error=ua'
+  end
 end
 
 post '/signup' do
-
-  erb :'/surveys'
+  new_user = User.new(params[:user])
+  if new_user.save
+    session[:user_id] = new_user.id
+    redirect '/surveys'
+  else
+    redirect back
+  end
 end
 
 get '/signout' do
-
-end
-
-post '/signout' do
-
+  session[:user_id] = nil
   redirect '/'
 end
