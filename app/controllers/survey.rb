@@ -1,7 +1,7 @@
 get '/surveys' do
   user_surveys = CompletedSurvey.where(taker_id: current_user.id)
   surveys_ids = user_surveys.map{ |completed_survey| completed_survey.survey_id }
-  surveys = Survey.not_in_list(surveys_ids)
+  surveys = Survey.where(status: "open").not_in_list(surveys_ids)
   erb :"surveys/index", locals: {surveys: surveys }
 end
 
