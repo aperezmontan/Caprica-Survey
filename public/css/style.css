@@ -41,7 +41,7 @@ nav>ul>li>a:hover {
 }
 
 section>header {
-	border-bottom: 1px dashed #ccc;
+	border-bottom: 1px solid #ccc;
 	font-weight: bold;
 	clear: both;
 }
@@ -61,11 +61,20 @@ input[type='radio'] {
 
 .submitBtn {
 	background-color: #489FD7;
-	color: #fff;
+	color: #fff !important;
 	float: right;
 	border: 1px solid #fff;
 	box-shadow: 5px 5px 5px #888888;
 	padding: 10px;
+	margin-right: 10px;
+}
+
+.submitBtn>a:visited {
+	color: #fff;
+}
+
+.submitBtn:hover {
+	background-color: #04ce1c;
 }
 
 .mainButtons {
@@ -75,7 +84,7 @@ input[type='radio'] {
 	clear: both;
 }
 
-.mainButtons >li  {
+/*.mainButtons >li  {
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
@@ -97,7 +106,7 @@ input[type='radio'] {
 
 .mainButtons>li>a:hover {
 	text-decoration: none;
-} 
+} */
 
 .surveyTitleLink {
 	display: inline-block;
@@ -123,9 +132,10 @@ input[type='radio'] {
 .deleteBtn, .openBtn, .editBtn, .closeBtn, .resultBtn {
 	width: 100px;
 	border: 1px solid #ccc;
-	-webkit-border-radius: 10px;
+	box-shadow: 5px 5px 5px #888888;
+/*	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
-	border-radius: 10px;
+	border-radius: 10px;*/
 }
 
 .deleteBtn:hover, .openBtn:hover, .editBtn:hover, .closeBtn:hover, .resultBtn:hover {
@@ -134,33 +144,42 @@ input[type='radio'] {
 }
 
 .deleteBtn {
-	background-color: #e52b2b;
+	background-color: #e74c3c;
 	color: #fff;
 }
 
 .openBtn, .resultBtn {
-	background-color: #04ce1c;
+	background-color: #2ecc71;
 	color: #fff;
 	
 }
 
 .closeBtn {
-	background-color: #e5c12b;
+	background-color: #f1c40f;
 	color: #fff;
 }
 
 .editBtn {
-	background-color: #d47908;
+	background-color: #2980b9;
 	color: #fff;
 }
 
 .logo {
-	  width: 315px;
-  height: 155px;
-  position: absolute;
-  left: 473px;
+	width: 315px;
+   height: 155px;
+}
+
+.navLogoConteiner {
+	width:315px;
+	margin: auto;
 }
 
 #logoContainer {
 	text-align: right;
+}
+
+.title{
+	display: block;
+	border-bottom: 1px solid #ccc;
+	padding-top: 10px;
 }

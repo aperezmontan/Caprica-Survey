@@ -2,12 +2,14 @@
 	<header>Survey</header>
 	<form id="createForm" action="/survey/create" method="post">
 		<input type="text" name="survey[title]" placeholder="Survey title" />
-		<label>Questions</label>
-		<% 1.times do |index| %>
+		<label class='title'>Questions</label>
+		<% 3.times do |index| %>
 		<%= erb :"surveys/_question_answers" , locals: { index: index } %>
 		<% end %>
-		<input id="addQuestionsBtn" type="button" class="addBtn" value="Add more questions" />
-		<input id="draftBtn" class="submitBtn" type="button" value="Save as draft" />
+		<div id="createBtnContainer">
 		<input id="submitBtn" class="submitBtn" type="submit" value="Submit" />
+		<input id="draftBtn" class="submitBtn" type="button" value="Save as draft" />
+		<input id="addQuestionsBtn" type="button" class="submitBtn" value="Add more questions" />
+	</div>
 	</form>
 </section>
