@@ -74,6 +74,7 @@ end
 delete '/survey/:id' do
   survey = Survey.find(params[:id])
   survey.destroy
+  return "true" if request.xhr?
   redirect "/user/#{survey.creator.id}"
 end
 

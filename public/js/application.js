@@ -3,13 +3,14 @@ $(document).ready(function() {
   $("#addQuestionsBtn").on('click',addQuestions);
   $("#surveySearch").keyup(filterSurveys);
   $("#saveOpenBtn").on('click',updateSurvey);
+  $(".delSurvey").on('submit', deleteSurvey);
 
   $.expr[":"].contains = $.expr.createPseudo(function(arg) {
     return function( elem ) {
         return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
     };
   });
-  
+
 });
 
 var createDraftSurvey = function(e){
@@ -24,7 +25,7 @@ var createDraftSurvey = function(e){
       window.location = "/surveys";
     }
   }).fail(function(response){
-      alert(response);
+      alert(JSON.stringify(response));
   });
 
 };
@@ -62,5 +63,57 @@ var updateSurvey = function(e) {
   $("#surveyUpdateForm").submit();
 };
 
+var deleteSurvey = function(e) {
+  e.preventDefault();
+  $.ajax({
+    url: "/authenticate",
+    method: "get",
+    data: {signup:'false'}
+  }).done(function(response){
+    $("#signin").append(response);
+    $("#signinForm").on('submit',{delEventUrl: e.target.action, delEventMethod: e.target.method, delData: $(e.target).serialize() },checkLogin);
+    $("#signin").modal();
+  }).fail(function(response){
+      alert(JSON.stringify(response));
+  });
+}
 
+var checkLogin = function(e){
+  e.preventDefault();
+  $.ajax({
+    url: e.target.action,
+    method: e.target.method,
+    data: $(e.target).serialize()
+  }).done(function(response){
+    if( response == 'true'){
+        var data = {};
+        data['url'] = e.data.delEventUrl;
+        data['method'] = e.data.delEventMethod;
+        data['data'] = e.data.delData;
+        delSurveyFunction(data);
+    } else {
+      $("#msgBox").html("Login incorrect");
+    }
+  }).fail(function(response){
+      alert(JSON.stringify(response));
+  });
+}
+
+var delSurveyFunction = function(data){
+  $.ajax({
+    url: data.url,
+    method: data.method,
+    data: data.data
+  }).done(function(response){
+      if(response == "true"){
+        var url_parts = data.url.split("/")
+        $("#survey_"+ url_parts[url_parts.length - 1]).remove();
+         $.modal.close();
+      } else {
+        alert("Could not delete the survey");
+      }
+  }).fail(function(response){
+      alert(JSON.stringify(response));
+  });
+}
 
