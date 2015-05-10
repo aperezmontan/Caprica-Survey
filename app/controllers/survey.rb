@@ -31,8 +31,6 @@ end
 
 get '/survey/:id/results' do |id|
   survey = Survey.find(id)
-  # questions = Survey.find(id).questions
-  # survey = Survey.find(id)
   erb :"/surveys/results", locals: {questions: survey.questions, survey: survey}
 end
 
@@ -48,11 +46,10 @@ get '/survey/:id' do |id|
 end
 
 post '/user/:user_id/survey/:survey_id' do |user_id, survey_id|
-  # survey = params[:survey_id]
   params["answers"].values.each do |answer_id|
       CompletedSurvey.create(answer_id: answer_id, survey_id: survey_id, taker_id: user_id)
   end
-  sample = Survey.find(survey)
+  sample = Survey.find(survey_id)
   sample.response_count += 1
   sample.save
   redirect '/surveys'

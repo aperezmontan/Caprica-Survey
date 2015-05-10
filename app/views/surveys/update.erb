@@ -1,7 +1,9 @@
 <section>
+  <label>Survey Title</label>
   <form id="surveyUpdateForm" action="/survey/<%= survey.id %>" method="post">
     <input type="hidden" name="_method" value="put" />
     <input type="text" name="survey[title]" value="<%= survey.title %>" />
+    <p></p>
     <label>Questions</label>
     <% survey.questions.each do |question| %>
       <input type="text" name="questions[<%= question.id %>]" value="<%= question.description %>" />
