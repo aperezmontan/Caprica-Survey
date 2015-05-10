@@ -2,7 +2,7 @@
 	<header><%= title %></header>
 	<ul class="surveysContainer">
 		<% surveys.each do |survey| %>
-			<li>
+			<li id="survey_<%= survey.id%>">
 				<div class='surveyTitleLink'>
 				<a href="/survey/<%= survey.id %>"><%= survey.title %></a>
 				<% if actions %>
