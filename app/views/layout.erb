@@ -29,7 +29,9 @@
           <li> <a href="/signout">Sign Out</a></li>
           <li> <a href="/user/<%= current_user.id %>"><%= current_user.name %></a></li>
         </ul>
-        <img class='logo' src="/img/logo_inv.png"/>
+        <div class="navLogoConteiner">
+          <img class='logo' src="/img/logo_inv.png"/>
+        </div>
         <% else %>
         <ul>
           <li><a href="/authenticate?signup=false">Sign In</a></li>
