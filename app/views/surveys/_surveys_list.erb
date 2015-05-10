@@ -1,6 +1,9 @@
 <section>
 	<header><%= title %></header>
 	<ul class="surveysContainer">
+	<%if surveys.count == 0%>
+		<div>You have no surveys left to take</div>
+	<%end%>
 		<% surveys.each do |survey| %>
 			<li id="survey_<%= survey.id%>">
 				<div class='surveyTitleLink'>
