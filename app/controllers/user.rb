@@ -6,10 +6,10 @@ get '/user/:id' do |id|
       survey.save
     end
   end
-  opensurveys = surveys.where(status: "open")
-  closedsurveys = surveys.where(status: "closed")
-  draftsurveys = surveys.where(status: "draft")
-  erb :'/users/profile', locals: {open: opensurveys, closed: closedsurveys, draft: draftsurveys}
+  open_surveys = surveys.where(status: "open")
+  closed_surveys = surveys.where(status: "closed")
+  draft_surveys = surveys.where(status: "draft")
+  erb :'/users/profile', locals: {open: open_surveys, closed: closed_surveys, draft: draft_surveys}
 end
 
 

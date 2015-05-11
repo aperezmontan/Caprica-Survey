@@ -30,9 +30,8 @@ post '/survey/create' do
 end
 
 get '/survey/:id/results' do |id|
-  questions = Survey.find(id).questions
   survey = Survey.find(id)
-  erb :"/surveys/results", locals: {questions: questions, survey: survey}
+  erb :"/surveys/results", locals: {questions: survey.questions, survey: survey}
 end
 
 get '/question/:id/results' do |id|
@@ -41,17 +40,16 @@ get '/question/:id/results' do |id|
   erb :'/questions/results', locals:{percent: percent, question: question}
 end
 
-get '/survey/:id' do
-  survey = Survey.find(params[:id])
+get '/survey/:id' do |id|
+  survey = Survey.find(id)
   erb :'surveys/show', locals:  {survey: survey, user_id: current_user.id}
 end
 
-post '/user/:user_id/survey/:survey_id' do
-  survey = params[:survey_id]
+post '/user/:user_id/survey/:survey_id' do |user_id, survey_id|
   params["answers"].values.each do |answer_id|
-      CompletedSurvey.create(answer_id: answer_id, survey_id: params[:survey_id], taker_id: params[:user_id])
+      CompletedSurvey.create(answer_id: answer_id, survey_id: survey_id, taker_id: user_id)
   end
-  sample = Survey.find(survey)
+  sample = Survey.find(survey_id)
   sample.response_count += 1
   sample.save
   redirect '/surveys'
