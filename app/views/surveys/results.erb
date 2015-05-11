@@ -1,11 +1,12 @@
 <script src="http://d3js.org/d3.v3.min.js"  charset="utf-8"></script>
 <script src="/js/results.js"></script>
 
-<%questions.each do |question|%>
-<p></p>
-<% percent = question.answer_count(question) %>
-  <%= erb :'questions/_survey_results', locals: {question: question, percent: percent} %>
-<%end%>
+<div><%questions.each do |question|%></div>
+<div>
+  <% percent = question.answer_count(question) %>
+    <%= erb :'questions/_survey_results', locals: {question: question, percent: percent} %>
+  <%end%>
+</div>
 
 <div id='outer' style="width: 100px; height:80px; margin: 0px auto; margin-top:20px; padding:10px">
     <div id="main" style="width:1000px; height:200px; margin: 0px auto; ">
