@@ -153,11 +153,8 @@ code {
     cursor:pointer;
 }
 
-
 #signin {
     display: none;
-    background-color: #333;
-    width:300px;
-    height:200px;
-}
-
+    overflow: hidden;
+  
+   }
