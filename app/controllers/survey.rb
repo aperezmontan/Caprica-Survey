@@ -1,5 +1,6 @@
 get '/surveys' do
   user_surveys = CompletedSurvey.where(taker_id: current_user.id)
+  #ZM: user_surveys.completed_surveys.pluck(:id)
   surveys_ids = user_surveys.map{ |completed_survey| completed_survey.survey_id }
   surveys = Survey.where(status: "open").not_in_list(surveys_ids)
   erb :"surveys/index", locals: {surveys: surveys }
@@ -11,8 +12,13 @@ end
 
 post '/survey/create' do
   return [400,"Invalid params, please fill all fields"] if check_params_for_survey params
+
+  #ZM: I would prefer that you not modify the params hash
+  #ZM: survey.creator_id = current_user.id
+
   params[:survey][:creator_id] = current_user.id
   survey = Survey.new(params[:survey])
+
   return [500,"Couldn't create survey"] unless survey.save
   questions = params["questions"]
   questions.each_with_index do |question,index|
@@ -30,12 +36,19 @@ post '/survey/create' do
 end
 
 get '/survey/:id/results' do |id|
+  #ZM: This leaves you open to url hacking bugs.
+  # begin
   survey = Survey.find(id)
   erb :"/surveys/results", locals: {questions: survey.questions, survey: survey}
+  # rescue
+    #do something
+  # end
 end
 
 get '/question/:id/results' do |id|
   question = Question.find(id)
+  #ZM: It is confusing that a method called answer_count, is assigned to a variable 
+  # named percent. 
   percent = question.answer_count(question)
   erb :'/questions/results', locals:{percent: percent, question: question}
 end

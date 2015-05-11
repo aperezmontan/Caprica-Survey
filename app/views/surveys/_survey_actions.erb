@@ -1,3 +1,5 @@
+<!-- ZM: Having a elsif in a partial based off a local is is a code smell. 
+I would look into a way of making a more focused set of logic --> 
 <ul class="actions">
 	<% if title == 'Open Surveys' %>
 		<li><form action='/status/survey/<%= survey.id %>' method='post'>

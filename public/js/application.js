@@ -5,6 +5,7 @@ $(document).ready(function() {
   $("#saveOpenBtn").on('click',updateSurvey);
   $(".delSurvey").on('submit', deleteSurvey);
 
+  // ZM: Idk what this does yet... but it looks cool
   $.expr[":"].contains = $.expr.createPseudo(function(arg) {
     return function( elem ) {
         return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
@@ -35,6 +36,7 @@ var addQuestions = function(){
   var questions_to_add = 3;
   $.get("/questions/layout",{index:'index'},function(response){
       for(var i = 1; i <= questions_to_add; i++){
+        //ZM: Louis just being him... i'd rename this 
         var aux = response.replace(/index/g,cur_index + i);
         $("#createBtnContainer").before(aux);
       }
@@ -48,6 +50,7 @@ var filterSurveys = function(e){
   if (searchTxt){
     $( ".surveysContainer>li" ).each(function(){
        if ( $(this).is(":contains('" + searchTxt + "')") ) {
+          //ZM: Use a toggle(true) toggle(false)
           $(this).css("display","block");
        } else {
           $(this).css("display","none");
@@ -72,6 +75,7 @@ var deleteSurvey = function(e) {
   }).done(function(response){
     $("#signin").append(response);
     $("#signoutLink").hide();
+    //ZM: I would use event delegation here, and call another function
     $("#signinForm").on('submit',{delEventUrl: e.target.action, delEventMethod: e.target.method, delData: $(e.target).serialize() },checkLogin);
     $("#signin").modal();
   }).fail(function(response){

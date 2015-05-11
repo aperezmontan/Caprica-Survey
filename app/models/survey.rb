@@ -9,7 +9,7 @@ class Survey < ActiveRecord::Base
 
   scope :not_in_list, -> survey_list { where.not(id: survey_list )}
 
-
+    #ZM: Delete out commented out code please 
   # def count_results(id)
   #   count = Survey.where(survey_id: id).count
   # end

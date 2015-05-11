@@ -9,7 +9,7 @@ jeffery = User.create(name: "jeffery", email: "jeffery@jeffery.com", password: 1
 icecream = Survey.create(title: "I scream, U scream, we all scream for ICE CREAM", creator_id: 2)
 nintiestvshows = Survey.create(title: "Nineties TV Shows", creator_id: 1)
 
-
+#ZM: You cannot always guarantee the ID will be 1.. use the object you created to assign this.
 icecream1 = Question.create(description: "What is your favorite ice cream flavor?", survey_id: 1)
   icecream11 = Answer.create(description: "Chocolate", question_id: 1)
   icecream12 = Answer.create(description: "Vanilla", question_id: 1)
