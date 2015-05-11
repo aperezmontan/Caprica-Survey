@@ -10,3 +10,8 @@
 	color: red;
 	padding:5px;
 }
+
+.dialogTitle {
+	background-color: #333;
+	color: #fff;
+}

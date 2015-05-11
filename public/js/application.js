@@ -71,6 +71,7 @@ var deleteSurvey = function(e) {
     data: {signup:'false'}
   }).done(function(response){
     $("#signin").append(response);
+    $("#signoutLink").hide();
     $("#signinForm").on('submit',{delEventUrl: e.target.action, delEventMethod: e.target.method, delData: $(e.target).serialize() },checkLogin);
     $("#signin").modal();
   }).fail(function(response){
