@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/css/login.css">
 <div>
   <%if params[:error] == 'ua'%>
     Unauthorized
@@ -7,7 +8,7 @@
   <div id="msgBox"></div>
   <input type=string name='name' placeholder="Name or email"/>
   <input type=password name='password' placeholder="Password"/>
-  <input type=submit name="Sign In"/>
+  <input type=submit name="Sign In" class="submitBtn" />
 </form>
 <ul>
 <li> <a href="/authenticate?signup=true" class='mainBtn' >Sign Up</a></li>
