@@ -15,7 +15,6 @@ gem 'pry'
 gem 'hirb'
 
 gem 'rake'
-gem ''
 gem 'shotgun'
 
 group :test do
