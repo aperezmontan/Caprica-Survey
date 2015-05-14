@@ -40,3 +40,9 @@ ActiveRecord::Base.establish_connection(
   :database => DB_NAME,
   :encoding => 'utf8'
 )
+
+development:
+  adapter: postgresql
+  host: localhost
+  username: user
+  database: app-dev
