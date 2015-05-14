@@ -13,7 +13,7 @@ gem 'activerecord', '~>4.1'
 gem 'bcrypt-ruby'
 gem 'pry'
 gem 'hirb'
-
+gem 'pg'
 gem 'rake'
 gem 'shotgun'
 
