@@ -22,7 +22,7 @@ end
 
 # Heroku controls what database we connect to by setting the DATABASE_URL environment variable
 # We need to respect that if we want our Sinatra apps to run on Heroku without modification
-db = URI.parse(ENV['DATABASE_URL'] || "postgres://localhost/#{APP_NAME}_#{Sinatra::Application.environment}")
+db = URI.parse(ENV['postgres://vzanttbnchwfzq:BZU2ZDfJr5bGZj3CvcT1zbMgy8@ec2-50-19-233-111.compute-1.amazonaws.com:5432/dfpsv9fktf2hqh'] || "postgres://localhost/#{APP_NAME}_#{Sinatra::Application.environment}")
 
 DB_NAME = db.path[1..-1]
 
